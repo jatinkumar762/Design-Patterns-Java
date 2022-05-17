@@ -2,6 +2,30 @@
 - This pattern is useful when we have a superclass with multiple sub-classes and based on input, we need to return one of the sub-class.
 - Super class can be an interface, abstract class or a normal java class.
 
+### Pros and Cons
+
+<table>
+    <thead>
+        <tr>
+            <th>Pros</th>
+            <th>Cons</th>
+        </tr>
+    </thead>
+    <tr>
+        <td>avoid tight coupling</td>
+        <td>code becomes complicated when we introduce a lot of new subclasses to implement the pattern.</td>
+    </tr>
+    <tr>
+        <td>Single Responsibility Principle.</td>
+    </tr>
+    <tr>
+        <td>Open/Closed Principle</td>
+    </tr>
+</table>
+
+
+
+
 ```java
 
 package creational;
