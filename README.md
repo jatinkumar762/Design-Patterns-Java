@@ -4,7 +4,7 @@ Design Patterns implemented in Java
 ### Creational Patterns
 
   1. [Factory Method](/Factory%20Method.md)
-  2. Abstract Factory
+  2. [Abstract Factory](/Abstract%20Factory.md)
   3. Builder
   4. Prototype
   5. Singleton
