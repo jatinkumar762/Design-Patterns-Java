@@ -13,15 +13,13 @@
     </thead>
     <tr>
         <td>Avoid tight coupling</td>
-	<td>code becomes complicated when we introduce a lot of </br> new subclasses to implement the pattern</td>
+	    <td>code becomes complicated when we introduce a lot of </br> new subclasses to implement the pattern</td>
     </tr>
     <tr>
         <td>Single Responsibility Principle. Product creation code </br>at one place in the program.</td>
-	<td></td>
     </tr>
     <tr>
         <td>Open/Closed Principle. We can introduce new types </br>of products into the program</td>
-	<td></td>
     </tr>
 </table>
 
