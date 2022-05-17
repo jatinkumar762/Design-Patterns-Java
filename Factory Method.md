@@ -17,9 +17,11 @@
     </tr>
     <tr>
         <td>Single Responsibility Principle. Product creation code </br>at one place in the program.</td>
+        <td></td>
     </tr>
     <tr>
         <td>Open/Closed Principle. We can introduce new types </br>of products into the program</td>
+        <td></td>
     </tr>
 </table>
 
