@@ -4,26 +4,11 @@
 
 ### Pros and Cons
 
-<table>
-    <thead>
-        <tr>
-            <th>Pros</th>
-            <th>Cons</th>
-        </tr>
-    </thead>
-    <tr>
-        <td>Avoid tight coupling</td>
-	    <td>code becomes complicated when we introduce a lot of </br> new subclasses to implement the pattern</td>
-    </tr>
-    <tr>
-        <td>Single Responsibility Principle. Product creation code </br>at one place in the program.</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>Open/Closed Principle. We can introduce new types </br>of products into the program</td>
-        <td></td>
-    </tr>
-</table>
+|	Pros	|	Cons	|
+|	---		|	---		|
+|	Avoid tight coupling	|	code becomes complicated when we introduce a lot of new subclasses to implement the pattern|
+|	Single Responsibility Principle. Product creation code at one place in the program. |
+|	Open/Closed Principle. We can introduce new types of products into the program|
 
 
 ```java
