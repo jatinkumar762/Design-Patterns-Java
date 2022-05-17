@@ -12,7 +12,7 @@
         </tr>
     </thead>
     <tr>
-        <td>avoid tight coupling</td>
+        <td>Avoid tight coupling</td>
 	<td>code becomes complicated when we introduce a lot of </br> new subclasses to implement the pattern</td>
     </tr>
     <tr>
