@@ -5,6 +5,10 @@ package creational;
 abstract class Chair{
 	abstract public int getPrice(); 
 	abstract public void setPrice(int price); 
+    @Override
+	public String toString() {
+		return "ChairA with price: "+this.getPrice();
+	}
 }
 
 class ChairA extends Chair{
@@ -15,16 +19,9 @@ class ChairA extends Chair{
 		return price;
 	}
 
-
 	public void setPrice(int price) {
 		this.price = price;
-	}
-
-	@Override
-	public String toString() {
-		return "ChairA with price: "+price;
-	}
-	
+	}	
 }
 
 class ChairB extends Chair{
@@ -35,16 +32,9 @@ class ChairB extends Chair{
 		return price;
 	}
 
-
 	public void setPrice(int price) {
 		this.price = price;
 	}
-
-	@Override
-	public String toString() {
-		return "ChairB with price: "+price;
-	}
-	
 }
 
 
