@@ -5,7 +5,7 @@ package creational;
 abstract class Chair{
 	abstract public int getPrice(); 
 	abstract public void setPrice(int price); 
-    @Override
+	@Override
 	public String toString() {
 		return "ChairA with price: "+this.getPrice();
 	}
