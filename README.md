@@ -26,5 +26,5 @@ Design Patterns implemented in Java
   3. Strategy
   4. Template Method
   5. State
-  6. Command
+  6. [Command](./Command%20Pattern.md)
   7. Mediator
