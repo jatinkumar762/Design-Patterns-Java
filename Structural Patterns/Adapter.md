@@ -153,6 +153,9 @@ public class EmployeeObjectAdapter implements Customer {
 
 }
 
+/*
+* Client knows Customer interface
+*/
 public class BusinessCardDesigner {
 	public static String designCard(Customer customer) {
 		String card = "";
