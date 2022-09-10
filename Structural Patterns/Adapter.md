@@ -59,6 +59,126 @@ class ObjectAdapter implements Target {
 } 
 ```
 
+```java
+package structural.adapter;
+/**
+ * 
+ * An existing class used in our system
+ * Adaptee
+ * 
+ */
+public class Employee {
+	private String fullName;
+	private String jobTitle;
+	private String officeLocation;
+	/**
+	 * @return the fullName
+	 */
+	public String getFullName() {
+		return fullName;
+	}
+	/**
+	 * @param fullName the fullName to set
+	 */
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+	/**
+	 * @return the jobTitle
+	 */
+	public String getJobTitle() {
+		return jobTitle;
+	}
+	/**
+	 * @param jobTitle the jobTitle to set
+	 */
+	public void setJobTitle(String jobTitle) {
+		this.jobTitle = jobTitle;
+	}
+	/**
+	 * @return the officeLocation
+	 */
+	public String getOfficeLocation() {
+		return officeLocation;
+	}
+	/**
+	 * @param officeLocation the officeLocation to set
+	 */
+	public void setOfficeLocation(String officeLocation) {
+		this.officeLocation = officeLocation;
+	}
+}
+
+/*
+ * Target interface required
+ * by client
+ */
+public interface Customer {
+	String getName();
+	String getDesignation();
+	String getAddress();
+}
+
+
+/*
+ * An object Adapter
+ * Using composition to translate interface
+ * 
+ */
+public class EmployeeObjectAdapter implements Customer {
+
+	private Employee employee;
+	
+	EmployeeObjectAdapter(Employee employee){
+		this.employee = employee;
+	}
+	
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return employee.getFullName();
+	}
+
+	@Override
+	public String getDesignation() {
+		// TODO Auto-generated method stub
+		return employee.getJobTitle();
+	}
+
+	@Override
+	public String getAddress() {
+		// TODO Auto-generated method stub
+		return employee.getOfficeLocation();
+	}
+
+}
+
+public class BusinessCardDesigner {
+	public static String designCard(Customer customer) {
+		String card = "";
+		card += customer.getName();
+		card += customer.getDesignation();
+		card += customer.getAddress();
+		return card;
+	}
+}
+
+public class AdapterDemo {
+	public static void main(String args[]) {
+		Employee emp = new Employee();
+		emp.setFullName("Karan");
+		emp.setJobTitle("Analyst");
+		emp.setOfficeLocation("Phonepe, Bangalore");
+		
+		EmployeeObjectAdapter employeeObjectAdapter = new EmployeeObjectAdapter(emp);
+		
+		String card = BusinessCardDesigner.designCard(employeeObjectAdapter);
+		
+		System.out.println(card);
+	}
+}
+```
+
 
 
 
