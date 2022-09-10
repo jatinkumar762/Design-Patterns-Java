@@ -26,6 +26,18 @@
   * Suitable for multiple Singleton class
 
 
+### Summary
+
+#### Pros
+* Easy to handle access to shared global resource
+* Easy to implement and gurantees 1 instance
+
+#### Cons
+* Used with parameters and confused with factory
+* Thread safety has to be ensured
+
+### Resources
+* [sudoCode - Story of Singleton Design Pattern](https://www.youtube.com/watch?v=EZDeEHXUf8w)
 
 
 
