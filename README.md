@@ -7,7 +7,7 @@ Design Patterns implemented in Java
   2. [Abstract Factory](./Creational%20Patterns/Abstract%20Factory.md)
   3. [Builder](./Creational%20Patterns/Builder.md)
   4. [Prototype](./Creational%20Patterns/Prototype.md)
-  5. Singleton
+  5. [Singleton](./Creational%20Patterns/Singleton.md)
 
 ### Structural Patterns
 
