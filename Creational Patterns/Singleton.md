@@ -25,6 +25,48 @@
   * The instance is initialized only when any app Module calls for it. 
   * Suitable for multiple Singleton class
 
+### Implementation
+
+```java
+package creational.singleton;
+
+class Logger {
+	private static Logger loggerInstance = null;
+
+	private Logger() {
+		// stop object creation using Reflection
+		if (loggerInstance != null) {
+			throw new RuntimeException("Not allowed");
+		}
+	}
+
+	public static Logger getLoggerInstance() {
+		if (loggerInstance == null) {
+			synchronized (Logger.class) {
+				if (loggerInstance == null) {
+					loggerInstance = new Logger();
+				}
+			}
+		}
+		return loggerInstance;
+	}
+
+}
+
+public class SingletonDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Logger logger1 = Logger.getLoggerInstance();
+		System.out.println(logger1);
+
+		Logger logger2 = Logger.getLoggerInstance();
+		System.out.println(logger2);
+
+	}
+
+}
+```
 
 ### Summary
 
