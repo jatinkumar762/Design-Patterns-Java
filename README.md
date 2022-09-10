@@ -15,7 +15,7 @@ Design Patterns implemented in Java
   2. Bridge
   3. Composite
   4. Decorator
-  5. Facade
+  5. [Facade](./Structural%20Patterns/Facade.md)
   6. Flyweight
   7. Proxy
 
