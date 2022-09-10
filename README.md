@@ -11,7 +11,7 @@ Design Patterns implemented in Java
 
 ### Structural Patterns
 
-  1. Adapter
+  1. [Adapter](./Structural%20Patterns/Adapter.md)
   2. Bridge
   3. Composite
   4. Decorator
