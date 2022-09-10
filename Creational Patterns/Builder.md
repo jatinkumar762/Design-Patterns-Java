@@ -167,4 +167,10 @@ public class MobileWithSetters {
 * Uses inner static class
 * Sometimes number of lines of code can be huge
 
+### Resources
+* [https://howtodoinjava.com/design-patterns/creational/builder-pattern-in-java/](https://howtodoinjava.com/design-patterns/creational/builder-pattern-in-java/)
+* [https://github.com/anomaly2104/coding-recipies/tree/master/src/main/java/com/uditagarwal/builder_pattern](https://github.com/anomaly2104/coding-recipies/tree/master/src/main/java/com/uditagarwal/builder_pattern)
+* [Udit Agarwal](https://www.youtube.com/watch?v=6Wi2XZeAf-Q)
+* [SudoCode](https://www.youtube.com/watch?v=4ff_KZdvJn8)
+
 
