@@ -104,4 +104,6 @@ public class Client {
 
 #### Example of a Decorator
 
-* 
+* Classes in Java's I/O package 
+* the java.io.BufferedOutputStream class decorates any java.io.OutputStream object and adds buffering to file writing operation. This improves the disk i/o performance by reducing number of writes.
+
