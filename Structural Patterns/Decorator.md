@@ -91,3 +91,17 @@ public class Client {
 	}
 }
 ```
+
+#### Implementation Considerations
+
+* Pay attention to equals and hashcode methods of decorator. When using decorators, you have to decide if decorated object is equal to same instance without decorator.
+* Decorator support recursive composition. Difficult to debug sometimes.
+
+#### Design Considerations
+
+* Decorators are more powerful & flexible than inheritance. Inheritance is static by definition but decorator allows you to dynamically compose behaviour using object at runtime. (At runtime we can decide which object is to include or not)
+* Do not change meaning of original operation. It should add helpful small behaviour to object's original behaviour.
+
+#### Example of a Decorator
+
+* 
