@@ -110,4 +110,13 @@ public class Client {
 #### Drawbacks
 
 * Often results in large number of classes being added to system, where each class adds a small amount of functionality. You often end up with lot of objects, one nested inside other and so on.
-* 
+
+#### Summary
+
+* We use it, when we want to add small behaviour on top of existing object.
+* A decorator has the same interface as the object it decorates or contains.
+* Decorator allows you to dynamically construct behaviour by using composition.
+
+#### Reference
+
+* [https://www.udemy.com/course/design-patterns-in-java-concepts-hands-on-projects/](https://www.udemy.com/course/design-patterns-in-java-concepts-hands-on-projects/)
