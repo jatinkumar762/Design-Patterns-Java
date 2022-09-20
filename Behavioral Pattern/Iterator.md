@@ -55,3 +55,12 @@ public class Client {
 	}
 }
 ```
+
+#### Implementation Consideration
+
+* Detecting change to underlying data structure while some code is using an iterator is important to notify to the client because then our iterator may not work correctly.
+* Having our iterator implementation as inner class makes it easy to access internal collection of aggregate objects.
+
+#### Drawbacks
+* Access to index during iteration is not readily available like we have in a for loop.
+* Making modifications to the collection while someone is using an iterator often makes that iterator instance invalid as its state may not be valid.
