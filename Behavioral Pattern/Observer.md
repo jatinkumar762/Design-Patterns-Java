@@ -21,3 +21,10 @@
 #### Drawbacks
 * Also each update becomes expensive as no. of observers increase and we have one or more "slow" observers in the list.
 * If observers call back the subject to find what changed then this can add up to quite a bit of overhead.
+
+#### Summary
+* Observer pattern allows to define one-to-many dependency between objects where many objects are interested in state change of a object.
+* Observers register themselves with the subject which then notifies all registered observers if any state change occurs.
+* In the notification sent to observers it is common to only send reference of subject instead of state values.Observers call the subject back for more information if needed.
+* We can also register observers for a specific event only, resulting in improved performance of sending notifications in subject.
+* This design pattern is also known as publisher-subscriber pattern.Java messaging uses this pattern but instead of registering with subject,listeners register with a JMS broker, which acts as a middleman.
