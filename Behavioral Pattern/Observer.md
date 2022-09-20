@@ -16,4 +16,8 @@
 * Performance can become an issue if number of observers are higher and if one or many of them need noticeable time to process notification. This can also cause pile up of pending notifications or missed notifications.
 
 #### Design Considerations
-* 
+* To reduce number of notifications sent on each state update, we can also have observers register for a specific property or event. This improves performance as on an event, subject notifies only the interested observers instead of all registered observers. (Seprate list for each event)
+
+#### Drawbacks
+* Also each update becomes expensive as no. of observers increase and we have one or more "slow" observers in the list.
+* If observers call back the subject to find what changed then this can add up to quite a bit of overhead.
