@@ -10,6 +10,128 @@
 * Implementing subject means taking care of handling attach, detach of observers, notifying all registered observers & providing methods to provide state information requested by observers.
 * Concrete observers uses a reference passed to them to call "subject" for getting more information about the state. If we are passing changed state in notify method then its not required.
 
+#### Implementation Example
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+//A concrete subject 
+public class Order {
+
+    private String id;
+
+    private double shippingCost;
+    //cost of items
+    private double itemCost;
+
+    private double discount;
+    //no of items
+    private int count;
+
+    private List<OrderObserver> observers = new ArrayList<>();
+    
+    public Order(String id) {
+        this.id = id;
+    }
+    
+    public void attach(OrderObserver observer) {
+    	observers.add(observer);
+    }
+
+    public void detach(OrderObserver observer) {
+    	observers.remove(observer);
+    }
+    
+    public double getTotal() {
+        return itemCost - discount + shippingCost;
+    }
+
+    public void addItem(double price) {
+        itemCost += price;
+        count ++;
+        observers.stream().forEach(o-> o.updated(this));
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setShippingCost(double cost) {
+        this.shippingCost = cost;
+    }
+
+    public void setDiscount(double discount) {
+        this.discount = discount;
+    }
+
+    public double getItemCost() {
+        return itemCost;
+    }
+
+    @Override
+    public String toString() {
+
+        return "Order#"+id+"\nItem cost:"+itemCost+"\nNo. of items:"+count
+                +"\nShipping cost:"+shippingCost+"\nDiscount:"+discount
+                +"\nTotal:"+getTotal();
+    }
+}
+
+//Abstract observer
+public interface OrderObserver {
+  void updated(Order order);
+}
+
+//Concrete observer
+public class QuantityObserver implements OrderObserver {
+	@Override
+    public void updated(Order order) {
+        int count = order.getCount();
+        if(count <= 5) {
+            order.setShippingCost(10);
+        } else {
+            order.setShippingCost(10 + (count - 5) * 1.5);
+        }
+    }
+}
+
+//Concrete observer
+public class PriceObserver implements OrderObserver{
+
+	@Override
+	public void updated(Order order) {
+		double cost = order.getItemCost();
+		
+		if(cost >= 500) {
+			order.setDiscount(50);
+		} else if(cost >= 200) {
+			order.setDiscount(10);
+		}
+	}
+}
+
+public class Client {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Order order = new Order("101");
+    	PriceObserver price = new PriceObserver();
+    	order.attach(price);
+    	
+    	QuantityObserver quant = new QuantityObserver();
+    	order.attach(quant);
+    	
+    	order.addItem(50);
+    	order.addItem(179);
+    	
+    	System.out.println(order);
+	}
+
+}
+```
+
+
 #### Implementation Consideration
 * In some rare scenarios you may end with a circular update loop. i.e. - an update to observable's state results in notification being sent to a observer which then takes some action and that action results in state change of our observable,triggering another notificat on. Watch for these!
 * An observer object can listen for changes in multiple subjects. It becomes quite easy the notification if subjects pass a reference to themselves in notification to observer.
