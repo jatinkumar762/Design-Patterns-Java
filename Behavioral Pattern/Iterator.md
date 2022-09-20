@@ -64,3 +64,8 @@ public class Client {
 #### Drawbacks
 * Access to index during iteration is not readily available like we have in a for loop.
 * Making modifications to the collection while someone is using an iterator often makes that iterator instance invalid as its state may not be valid.
+
+#### Summary
+* When we want to iterate or give sequential access to elements of aggregate object we can use iterator design pattern.
+* Iterator needs access to internal data structure of aggregator to provide its functionality.This usually means it's quite common to have iterator implemented as inner class.
+* Iterator allows the client code to check whether there is an element available to consume and give next available element.
