@@ -22,11 +22,106 @@
 
 - - - -
 
+###### Implementation Example
 
+```java
+//Interface implemented by all concrete
+//command classes
+public interface Command {
+	
+	void execute();
+}
 
+/*
+Light class and its corresponding command classes
+This class is the receiver.
+*/
+class Light
+{
+    public void on()
+    {
+        System.out.println("Light is on");
+    }
+    public void off()
+    {
+        System.out.println("Light is off");
+    }
+}
 
+/*
+A Concrete implementation of Command.
+*/
+class LightOnCommand implements Command
+{
+    Light light;
+ 
+    // The constructor is passed the light it
+    // is going to control.
+    public LightOnCommand(Light light)
+    {
+       this.light = light;
+    }
+    public void execute()
+    {
+       light.on();
+    }
+}
+
+class LightOffCommand implements Command
+{
+    Light light;
+    public LightOffCommand(Light light)
+    {
+        this.light = light;
+    }
+    public void execute()
+    {
+         light.off();
+    }
+}
+
+/*
+This is invoker actually executing commands.
+A Simple remote control with one button
+*/
+class SimpleRemoteControl
+{
+    Command slot;  // only one button
+    public SimpleRemoteControl(){
+    }
+ 
+    public void setCommand(Command command){
+        // set the command the remote will
+        // execute
+        slot = command;
+    }
+ 
+    public void buttonWasPressed(){
+        slot.execute();
+    }
+}
+
+// Driver class
+//Client
+class RemoteControlTest
+{
+    public static void main(String[] args)
+    {
+        SimpleRemoteControl remote = new SimpleRemoteControl();
+        Light light = new Light();
+ 
+        // we can change command dynamically
+        remote.setCommand(new LightOnCommand(light));
+        remote.buttonWasPressed();
+        remote.setCommand(new LightOffCommand(light));
+        remote.buttonWasPressed();
+     }
+}
+```
 
 
 
 ### References
 * [Command Design Pattern - Derek Banas](https://www.youtube.com/watch?v=7Pj5kAhVBlg)
+* [Udemy - Java Design Patterns & SOLID Design Principles](https://www.udemy.com/course/design-patterns-in-java-concepts-hands-on-projects/)
+* [https://www.geeksforgeeks.org/command-pattern/](https://www.geeksforgeeks.org/command-pattern/)
