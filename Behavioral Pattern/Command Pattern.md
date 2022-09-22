@@ -118,6 +118,7 @@ class RemoteControlTest
      }
 }
 ```
+- - - -
 
 ###### Example of Command Pattern
 
@@ -126,7 +127,16 @@ class RemoteControlTest
   * In the run method (similar to execute) we'll call an operation on the receiver. 
   * We can send this object for later execution to other parts of our application.
 
+- - - -
 
+###### Summary
+
+* Command pattern allows you to treat requests for operations as objects. This allows you to send these objects to different parts of code for later execution or to a different thread. 
+* Commands typically invoke the actual operation on a receiver but contain parameters or information needed for invocation. 
+* Client code is responsible for creating instances of command & providing it with receiver and request information. 
+* Commands can also implement an undo feature. Here command itself stores a snapshot of receiver. 
+
+- - - -
 
 ### References
 * [Command Design Pattern - Derek Banas](https://www.youtube.com/watch?v=7Pj5kAhVBlg)
