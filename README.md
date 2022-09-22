@@ -21,7 +21,7 @@ Design Patterns implemented in Java
 
 ### Behavioral Patterns
 
-  1. Chain of Responsibility
+  1. [Chain of Responsibility](./Behavioral%20Pattern/Chain%20of%20Responsibility.md)
   2. [Observer](./Behavioral%20Pattern/Observer.md)
   3. Strategy
   4. Template Method
