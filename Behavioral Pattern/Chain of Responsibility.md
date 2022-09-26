@@ -259,4 +259,12 @@ public class Client {
 #### Design Considerations
 * Sometimes you can think of using existing connections or chains in objects. For example if you are using composite pattern you already have a chain which can be used to implement this behavior.
 
+#### Example
+* Probably the best example of chain of responsibility is servlet filters. Each filter gets a chance to handle incoming request and passes it down the chain once its work is done.
+
+#### Drawbacks
+* There is no guarantee provided in the pattern that a request will be handled. Request can traverse whole chain and fall off at the other end without ever being processed and we won't know it. 
+* It is easy to misconfigure the chain when we are connecting successors.There is nothing in the pattern that will let us know of any such problems. Some handlers may be left unconnected to chain.
+
+
 
