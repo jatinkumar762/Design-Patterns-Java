@@ -1,5 +1,12 @@
-# Design-Patterns-Java
-Design Patterns implemented in Java
+### Most popular and useful design principles (Work@Tech website)
+
+1. [Software Design Principles - I (DRY, YAGNI, KISS, etc)](https://workat.tech/machine-coding/tutorial/software-design-principles-dry-yagni-eytrxfhz1fla#dry)
+2. [Software Design Principles - II (Abstraction, Extensibility, Cohesion)]()
+3. [Software Design Principles - III (SOLID Principles)]()
+
+---
+
+## Design-Patterns-Java
 
 ### Creational Patterns
 
