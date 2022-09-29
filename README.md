@@ -8,6 +8,8 @@
 2. [Software Design Principles - II (Abstraction, Extensibility, Cohesion)](https://workat.tech/machine-coding/tutorial/software-design-principles-abstraction-extensibility-cohesion-acafi2r32c78)
 3. [Software Design Principles - III (SOLID Principles)](https://workat.tech/machine-coding/tutorial/solid-design-principles-8yu7bjegrxs5)
 
+* [SOLID Design Principle with Example](./Design%20Principle/SOLID.md)
+
 ---
 
 ## Design-Patterns-Java
