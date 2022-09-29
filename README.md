@@ -1,3 +1,7 @@
+📟 Please give a star 🌟 to the repository if it helped you.
+
+</br>
+
 ### Most popular and useful design principles (Work@Tech website)
 
 1. [Software Design Principles - I (DRY, YAGNI, KISS, etc)](https://workat.tech/machine-coding/tutorial/software-design-principles-dry-yagni-eytrxfhz1fla#dry)
