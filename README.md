@@ -42,3 +42,8 @@
   6. [Command](./Behavioral%20Pattern/Command%20Pattern.md)
   7. Mediator
   8. [Iterator](./Behavioral%20Pattern/Iterator.md)
+
+#### References
+  1. [Java Design Patterns - Example Tutorial](https://www.digitalocean.com/community/tutorials/java-design-patterns-example-tutorial)
+
+--- 
