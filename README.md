@@ -45,5 +45,6 @@
 
 #### References
   1. [Java Design Patterns - Example Tutorial](https://www.digitalocean.com/community/tutorials/java-design-patterns-example-tutorial)
+  2. [Software Design Patterns Tutorial](https://www.geeksforgeeks.org/software-design-patterns/)
 
 --- 
