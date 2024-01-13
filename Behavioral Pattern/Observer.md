@@ -150,3 +150,7 @@ public class Client {
 * In the notification sent to observers it is common to only send reference of subject instead of state values.Observers call the subject back for more information if needed.
 * We can also register observers for a specific event only, resulting in improved performance of sending notifications in subject.
 * This design pattern is also known as publisher-subscriber pattern.Java messaging uses this pattern but instead of registering with subject,listeners register with a JMS broker, which acts as a middleman.
+
+
+#### References
+* https://howtodoinjava.com/design-patterns/behavioral/observer-design-pattern/

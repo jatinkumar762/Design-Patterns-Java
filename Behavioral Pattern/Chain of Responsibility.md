@@ -267,7 +267,7 @@ public class Client {
 * It is easy to misconfigure the chain when we are connecting successors.There is nothing in the pattern that will let us know of any such problems. Some handlers may be left unconnected to chain.
 
 
-### References
+#### References
 * https://www.geeksforgeeks.org/chain-responsibility-design-pattern/
 * https://howtodoinjava.com/design-patterns/behavioral/chain-of-responsibility-design-pattern/
 
