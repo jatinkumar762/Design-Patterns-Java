@@ -36,7 +36,7 @@
 
   1. [Chain of Responsibility](./Behavioral%20Pattern/Chain%20of%20Responsibility.md)
   2. [Observer](./Behavioral%20Pattern/Observer.md)
-  3. Strategy
+  3. [Strategy](./Behavioral%20Pattern/Strategy.md)
   4. Template Method
   5. State
   6. [Command](./Behavioral%20Pattern/Command%20Pattern.md)
