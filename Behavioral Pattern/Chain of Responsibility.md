@@ -95,14 +95,14 @@ Level 3 handling request 25
 
 #### Practical Use Cases
 
-1. Customer Support System
+**1. Customer Support System :**
 In a customer support system, a request or complaint may be handled by different levels of support personnel based on its complexity or severity. For instance:
 
 * A basic inquiry is handled by Level 1 support.
 * A more complex issue is escalated to Level 2 support.
 * Critical problems are handled by Level 3 support.
 
-2. Logging Framework
+**2. Logging Framework :**
 In a logging framework, different log levels (e.g., debug, info, warning, error) might be handled by different loggers. For instance:
 
 * A debug logger handles debug messages.
