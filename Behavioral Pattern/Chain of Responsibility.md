@@ -110,8 +110,8 @@ In a logging framework, different log levels (e.g., debug, info, warning, error)
 * An error logger handles error messages.
 
 #### Drawbacks
-* There is no guarantee provided in the pattern that a request will be handled. Request can traverse whole chain and fall off at the other end without ever being processed and we won't know it. 
-* It is easy to misconfigure the chain when we are connecting successors.There is nothing in the pattern that will let us know of any such problems. Some handlers may be left unconnected to chain.
+* There is no guarantee provided in the pattern that a request will be handled.
+* It is easy to misconfigure the chain when we are connecting successors. There is nothing in the pattern that will let us know of any such problems. Some handlers may be left unconnected to chain.
 
 
 #### References
