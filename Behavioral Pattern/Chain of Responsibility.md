@@ -259,8 +259,21 @@ public class Client {
 #### Design Considerations
 * Sometimes you can think of using existing connections or chains in objects. For example if you are using composite pattern you already have a chain which can be used to implement this behavior.
 
-#### Example
-* Probably the best example of chain of responsibility is servlet filters. Each filter gets a chance to handle incoming request and passes it down the chain once its work is done.
+#### Practical Use Cases
+
+1. Customer Support System
+In a customer support system, a request or complaint may be handled by different levels of support personnel based on its complexity or severity. For instance:
+
+* A basic inquiry is handled by Level 1 support.
+* A more complex issue is escalated to Level 2 support.
+* Critical problems are handled by Level 3 support.
+
+2. Logging Framework
+In a logging framework, different log levels (e.g., debug, info, warning, error) might be handled by different loggers. For instance:
+
+* A debug logger handles debug messages.
+* An info logger handles informational messages.
+* An error logger handles error messages.
 
 #### Drawbacks
 * There is no guarantee provided in the pattern that a request will be handled. Request can traverse whole chain and fall off at the other end without ever being processed and we won't know it. 
