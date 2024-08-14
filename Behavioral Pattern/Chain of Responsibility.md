@@ -93,6 +93,108 @@ Level 2 handling request 15
 Level 3 handling request 25
 ```
 
+#### Logging Framework Example
+
+**Step 1:** Define the Logger Abstract Class
+
+```java
+public abstract class Logger {
+    public static int DEBUG = 1;
+    public static int INFO = 2;
+    public static int ERROR = 3;
+
+    protected int level;
+
+    // next element in chain or responsibility
+    protected Logger nextLogger;
+
+    public void setNextLogger(Logger nextLogger) {
+        this.nextLogger = nextLogger;
+    }
+
+    public void logMessage(int level, String message) {
+        if (this.level <= level) {
+            write(message);
+        }
+        if (nextLogger != null) {
+            nextLogger.logMessage(level, message);
+        }
+    }
+
+    protected abstract void write(String message);
+}
+```
+
+**Step 2:** Create Concrete Logger Classes
+
+```java
+public class DebugLogger extends Logger {
+    public DebugLogger(int level) {
+        this.level = level;
+    }
+
+    @Override
+    protected void write(String message) {
+        System.out.println("Debug: " + message);
+    }
+}
+
+public class InfoLogger extends Logger {
+    public InfoLogger(int level) {
+        this.level = level;
+    }
+
+    @Override
+    protected void write(String message) {
+        System.out.println("Info: " + message);
+    }
+}
+
+public class ErrorLogger extends Logger {
+    public ErrorLogger(int level) {
+        this.level = level;
+    }
+
+    @Override
+    protected void write(String message) {
+        System.out.println("Error: " + message);
+    }
+}
+```
+
+**Step 3:** Create the Chain and Log Messages
+
+```java
+public class Main {
+    private static Logger getChainOfLoggers() {
+        Logger errorLogger = new ErrorLogger(Logger.ERROR);
+        Logger infoLogger = new InfoLogger(Logger.INFO);
+        Logger debugLogger = new DebugLogger(Logger.DEBUG);
+
+        debugLogger.setNextLogger(infoLogger);
+        infoLogger.setNextLogger(errorLogger);
+
+        return debugLogger;
+    }
+
+    public static void main(String[] args) {
+        Logger loggerChain = getChainOfLoggers();
+
+        loggerChain.logMessage(Logger.DEBUG, "This is a debug message");
+        loggerChain.logMessage(Logger.INFO, "This is an informational message");
+        loggerChain.logMessage(Logger.ERROR, "This is an error message");
+    }
+}
+```
+
+**Output**
+
+```
+Debug: This is a debug message
+Info: This is an informational message
+Error: This is an error message
+```
+
 #### Practical Use Cases
 
 **1. Customer Support System :**
