@@ -93,13 +93,6 @@ Level 2 handling request 15
 Level 3 handling request 25
 ```
 
-#### Implementation Considerations
-* Prefer defining handler as interface as it allows you to implement chain of responsibility without worrying about single inheritance rule of Java.
-* Handlers can allow the request to propagate even if they handle the request. 
-
-#### Design Considerations
-* Sometimes you can think of using existing connections or chains in objects. For example if you are using composite pattern you already have a chain which can be used to implement this behavior.
-
 #### Practical Use Cases
 
 1. Customer Support System
