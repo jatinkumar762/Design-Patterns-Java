@@ -1,28 +1,25 @@
 * Useful when we want to avoid multiple if else condition in a code
-* An object is used to represent and encapsulate all the information needed to call a method at a later time. 
-* This information includes the method name, the object that owns the method and values for the method parameters. This object is called command.
+* An object is used to represent request/command and encapsulate all the information needed to call a method at a later time. 
+* This information includes the method name, the object that owns the method and values for the method parameters.
 * We can store lists of code that is executed at a later time or many times
 * Command object helps in loose coupling between two classes where one class (invoker) shall call a method on other class (receiver) to perform a business operation.
 
-- - - -
 
-###### Participants for command design pattern are:
+#### Participants for command design pattern are:
   * Command interface - for declaring an operation.
   * Concrete command classes –
   * Invoker -   which is given the command object to carry out the operation.
   * Receiver – which execute the operation.
 
-- - - -
 
-###### Positive
+#### Positive
   1. We can store multiple commands in a class to use over and over
 
-###### Negative
+#### Negative
   1. We create many small classes that store list of commands
 
-- - - -
 
-###### Implementation Example
+#### Implementation Example
 
 ```java
 //Interface implemented by all concrete
@@ -120,7 +117,7 @@ class RemoteControlTest
 ```
 - - - -
 
-###### Example of Command Pattern
+#### Example of Command Pattern
 
 * The java.lang.Runnable interface (similar to command interface) represents the Command pattern. 
   * We create the object of class implementing runnable, providing all information it needs. 
@@ -129,7 +126,7 @@ class RemoteControlTest
 
 - - - -
 
-###### Summary
+#### Summary
 
 * Command pattern allows you to treat requests for operations as objects. This allows you to send these objects to different parts of code for later execution or to a different thread. 
 * Commands typically invoke the actual operation on a receiver but contain parameters or information needed for invocation. 
@@ -138,7 +135,7 @@ class RemoteControlTest
 
 - - - -
 
-### References
+#### References
 * [Command Design Pattern - Derek Banas](https://www.youtube.com/watch?v=7Pj5kAhVBlg)
 * [Udemy - Java Design Patterns & SOLID Design Principles](https://www.udemy.com/course/design-patterns-in-java-concepts-hands-on-projects/)
 * [https://www.geeksforgeeks.org/command-pattern/](https://www.geeksforgeeks.org/command-pattern/)
