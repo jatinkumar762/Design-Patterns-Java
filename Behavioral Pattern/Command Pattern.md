@@ -129,6 +129,22 @@ class RemoteControlTest
 
 #### Example of Command Pattern
 
+```java
+public class CommandPatternWithRunnable {
+    public static void main(String[] args) {
+        Thread thread = new Thread(new PrintTask());
+        thread.start();
+    }
+}
+
+class PrintTask implements Runnable {
+    @Override
+    public void run() {
+        System.out.println("Print Task Executed");
+    }
+}
+```
+
 * The java.lang.Runnable interface (similar to command interface) represents the Command pattern. 
 * We create the object of class implementing runnable, providing all information it needs. 
 * In the run method (similar to execute) we'll call an operation on the receiver. 
