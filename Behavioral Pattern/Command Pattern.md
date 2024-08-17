@@ -7,9 +7,10 @@
 
 #### Participants for command design pattern are:
   * Command interface - for declaring an operation.
-  * Concrete command classes –
+  * Concrete command classes – Implements the Command interface
   * Invoker -   which is given the command object to carry out the operation.
   * Receiver – which execute the operation.
+  * Client - Creates a ConcreteCommand object and sets its receiver
 
 
 #### Positive
@@ -47,6 +48,7 @@ class Light
 
 /*
 A Concrete implementation of Command.
+for each operation of Light (Receiver) we create a command
 */
 class LightOnCommand implements Command
 {
@@ -98,33 +100,39 @@ class SimpleRemoteControl
     }
 }
 
-// Driver class
+//Driver class
 //Client
 class RemoteControlTest
 {
     public static void main(String[] args)
     {
+        //Receiver
+        Light livingRoomLight = new Light();
+
+        //associates the Receiver with the ConcreteCommand.
+        Command turnOnLight = new TurnOnLightCommand(livingRoomLight);
+        Command turnOffLight = new TurnOffLightCommand(livingRoomLight);
+
+        //Invoker
+        //Holds a command and calls the execute method when requested.
         SimpleRemoteControl remote = new SimpleRemoteControl();
-        Light light = new Light();
- 
+
         // we can change command dynamically
-        remote.setCommand(new LightOnCommand(light));
+        remote.setCommand(turnOnLight);
         remote.buttonWasPressed();
-        remote.setCommand(new LightOffCommand(light));
+
+        remote.setCommand(turnOffLight);
         remote.buttonWasPressed();
      }
 }
 ```
-- - - -
 
 #### Example of Command Pattern
 
 * The java.lang.Runnable interface (similar to command interface) represents the Command pattern. 
-  * We create the object of class implementing runnable, providing all information it needs. 
-  * In the run method (similar to execute) we'll call an operation on the receiver. 
-  * We can send this object for later execution to other parts of our application.
-
-- - - -
+* We create the object of class implementing runnable, providing all information it needs. 
+* In the run method (similar to execute) we'll call an operation on the receiver. 
+* We can send this object for later execution to other parts of our application.
 
 #### Summary
 
