@@ -1,13 +1,14 @@
 
 ### Introduction
-* Adapter design pattern is one of the structural design pattern and its used so that two unrelated interfaces can work together. 
+* its used so that two unrelated interfaces can work together. 
 * The object, that joins these unrelated interfaces, is called an Adapter.
 
 #### Use Case
 * We have an existing object which provides the functionality that client needs. But client code can't use this object because it expects an object with different interface.
 * Using adapter design pattern we make this existing object work with client by adapting the object to client's expected interface.
 
-### Example
+#### Java Example
+
 * The main use of this pattern is when a class that you need to use doesn’t meet the requirements of an interface.
 * BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
   1. System.in is static instance of InputStream, reads the data from the console in bytes stream.
@@ -16,7 +17,7 @@
   4. ideal situation to put a adapter in between two incompatible interfaces.
   5. InputStreamReader does exactly this thing and works adapter between System.in and BufferedReader.
 
-### Implementation
+#### Implementation
 
 ```java
 /**
@@ -59,8 +60,9 @@ class ObjectAdapter implements Target {
 } 
 ```
 
+#### Example - 1
+
 ```java
-package structural.adapter;
 /**
  * 
  * An existing class used in our system
@@ -71,39 +73,27 @@ public class Employee {
 	private String fullName;
 	private String jobTitle;
 	private String officeLocation;
-	/**
-	 * @return the fullName
-	 */
+
 	public String getFullName() {
 		return fullName;
 	}
-	/**
-	 * @param fullName the fullName to set
-	 */
+
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
 	}
-	/**
-	 * @return the jobTitle
-	 */
+
 	public String getJobTitle() {
 		return jobTitle;
 	}
-	/**
-	 * @param jobTitle the jobTitle to set
-	 */
+
 	public void setJobTitle(String jobTitle) {
 		this.jobTitle = jobTitle;
 	}
-	/**
-	 * @return the officeLocation
-	 */
+
 	public String getOfficeLocation() {
 		return officeLocation;
 	}
-	/**
-	 * @param officeLocation the officeLocation to set
-	 */
+
 	public void setOfficeLocation(String officeLocation) {
 		this.officeLocation = officeLocation;
 	}
@@ -135,19 +125,16 @@ public class EmployeeObjectAdapter implements Customer {
 	
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
 		return employee.getFullName();
 	}
 
 	@Override
 	public String getDesignation() {
-		// TODO Auto-generated method stub
 		return employee.getJobTitle();
 	}
 
 	@Override
 	public String getAddress() {
-		// TODO Auto-generated method stub
 		return employee.getOfficeLocation();
 	}
 
