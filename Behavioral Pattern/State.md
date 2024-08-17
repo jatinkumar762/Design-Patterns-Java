@@ -199,6 +199,14 @@ public class ThreadStateExample {
 }
 ```
 
+#### When to use the State Design Pattern
+
+* **Multiple states with distinct behaviors:**
+
+* **Frequent state changes:**
+
+* **Adding new states easily:**
+
 #### When not to use the State Design Pattern
 
 * **Few states with simple behavior:** If your object has only a few simple states with minimal behavioral differences, the overhead of the State pattern outweighs its benefits. In such cases, simpler conditional logic within the object itself might suffice.
