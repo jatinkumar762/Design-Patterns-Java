@@ -26,7 +26,7 @@
 
   1. [Adapter](./Structural%20Patterns/Adapter.md)
   2. Bridge
-  3. Composite
+  3. [Composite](./Structural%20Patterns/Composite.md)
   4. [Decorator](./Structural%20Patterns/Decorator.md)
   5. [Facade](./Structural%20Patterns/Facade.md)
   6. Flyweight
