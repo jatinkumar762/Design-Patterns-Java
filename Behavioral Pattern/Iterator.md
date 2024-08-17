@@ -1,8 +1,20 @@
 
 #### Introduction
+
 * Iterator allows a way to access elements/children of an aggregate object in sequence while hiding the actual internal data structure used.
 * Java language iterators are implementations of this design pattern.
-* Iterators are stateful, meaning an iterator object remebers its position while iterating
+* Iterators are stateful, meaning an iterator object remembers its position while iterating
+
+#### Key Components of the Iterator Design Pattern
+
+1. **Iterator:** An interface that declares the operations for iterating over elements.
+
+2. **Concrete Iterator:** A class that implements the Iterator interface and provides the implementation for iterating over elements.
+
+3. **Aggregate:** An interface that declares the operations for **creating an iterator.**
+
+4. **Concrete Aggregate:** A class that implements the Aggregate interface and **provides the implementation for creating an iterator.**
+
 
 #### Implement Iterator
 * We start by defining Iterator interface
