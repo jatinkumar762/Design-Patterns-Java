@@ -16,6 +16,112 @@
 4. **Concrete Aggregate:** A class that implements the Aggregate interface and **provides the implementation for creating an iterator.**
 
 
+
+#### Example-1
+
+**Step 1:** Define the Iterator Interface
+
+```java
+interface Iterator<T> {
+    boolean hasNext();
+    T next();
+}
+```
+
+**Step 2:** Create Concrete Iterator Class
+
+```java
+class BookIterator implements Iterator<Book> {
+    private Book[] books;
+    private int position;
+
+    public BookIterator(Book[] books) {
+        this.books = books;
+        this.position = 0;
+    }
+
+    @Override
+    public boolean hasNext() {
+        return position < books.length && books[position] != null;
+    }
+
+    @Override
+    public Book next() {
+        return books[position++];
+    }
+}
+```
+
+**Step 3:** Define the Aggregate Interface
+
+```java
+//Declares the operation for creating an iterator.
+interface Aggregate<T> {
+    Iterator<T> createIterator();
+}
+```
+
+**Step 4:** Create Concrete Aggregate Class
+
+```java
+//Implements the Aggregate interface and provides the implementation for creating a BookIterator.
+class BookCollection implements Aggregate<Book> {
+    private Book[] books;
+    private int index;
+
+    public BookCollection(int size) {
+        books = new Book[size];
+        index = 0;
+    }
+
+    public void addBook(Book book) {
+        if (index < books.length) {
+            books[index++] = book;
+        }
+    }
+
+    @Override
+    public Iterator<Book> createIterator() {
+        return new BookIterator(books);
+    }
+}
+```
+
+**Step 5:** Define the Book Class
+
+```java
+class Book {
+    private String title;
+
+    public Book(String title) {
+        this.title = title;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+}
+```
+
+**Step 6:** Use the Iterator Pattern
+
+```java
+public class IteratorPatternExample {
+    public static void main(String[] args) {
+        BookCollection collection = new BookCollection(5);
+        collection.addBook(new Book("Design Patterns"));
+        collection.addBook(new Book("Effective Java"));
+        collection.addBook(new Book("Clean Code"));
+
+        Iterator<Book> iterator = collection.createIterator();
+        while (iterator.hasNext()) {
+            Book book = iterator.next();
+            System.out.println("Book: " + book.getTitle());
+        }
+    }
+}
+```
+
 #### Implement Iterator
 * We start by defining Iterator interface
   * Iterator has methods to check whether there is an element available in sequence &to get that element
@@ -67,6 +173,13 @@ public class Client {
 	}
 }
 ```
+
+#### Real-world Examples in Java
+
+1. **Java's java.util.Iterator:**
+
+The Java Collections Framework provides an Iterator interface that is used to iterate over collections such as List, Set, and Map.
+
 
 #### Implementation Consideration
 
