@@ -281,5 +281,54 @@ public class AdapterPatternExample {
 }
 ```
 
+#### Real-world Examples in Java
+
+1. **Java's java.util.Arrays#asList Method**
+
+* The asList method in the Arrays class provides an adapter from an array to a List.
+
+```java
+import java.util.Arrays;
+import java.util.List;
+
+public class ArraysAsListExample {
+    public static void main(String[] args) {
+        String[] array = {"a", "b", "c"};
+        List<String> list = Arrays.asList(array);
+
+        System.out.println("List: " + list);
+    }
+}
+```
+
+2.  **Java's java.io.InputStreamReader and java.io.OutputStreamWriter**
+
+* The InputStreamReader and OutputStreamWriter classes in Java act as adapters between byte streams (InputStream/OutputStream) and character streams (Reader/Writer).
+
+```java
+import java.io.*;
+
+public class StreamAdapterExample {
+    public static void main(String[] args) {
+        try {
+            InputStream inputStream = new FileInputStream("input.txt");
+            Reader reader = new InputStreamReader(inputStream, "UTF-8");
+
+            int data = reader.read();
+            while (data != -1) {
+                System.out.print((char) data);
+                data = reader.read();
+            }
+
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+
+
 ### Useful Links
 * [howtodoinjava - Adapter Design Pattern in Java](https://howtodoinjava.com/design-patterns/structural/adapter-design-pattern-in-java/)
