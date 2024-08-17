@@ -199,5 +199,13 @@ public class ThreadStateExample {
 }
 ```
 
+#### When not to use the State Design Pattern
+
+* **Few states with simple behavior:** If your object has only a few simple states with minimal behavioral differences, the overhead of the State pattern outweighs its benefits. In such cases, simpler conditional logic within the object itself might suffice.
+
+* **Performance-critical scenarios:** The pattern can introduce additional object creation and method calls, potentially impacting performance. If performance is paramount, a different approach might be more suitable.
+
+* **Over-engineering simple problems:** Don’t apply the pattern just for the sake of using a design pattern. If your logic is clear and maintainable without it, stick with the simpler solution.
+
 #### Reference
 * https://www.geeksforgeeks.org/state-design-pattern/
