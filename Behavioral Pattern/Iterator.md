@@ -127,7 +127,7 @@ public class IteratorPatternExample {
   * Iterator has methods to check whether there is an element available in sequence &to get that element
 * We then implement the Iterator in a class. This is typically an inner class in our concrete aggregate. Making it an inner class makes it easy to access internal data structures
 
-#### Implementation Example
+#### Example-2
 
 ```java
 package behavioral.iterator;
