@@ -133,3 +133,48 @@ public class PrototypePatternDemo {
 - **Cloning complex objects can be difficult:** If an object has complex internal structures, ensuring that all parts of the object are correctly cloned can be challenging.
 
 - **Requires careful implementation:** Cloning methods need to be implemented carefully to avoid issues with deep and shallow copying, especially with objects that contain references to other objects.
+
+
+#### Note: The clone Method
+
+The clone method in the Object class is a protected method that creates and returns a copy of the object. For a class to allow cloning, it must:
+
+1. Implement the Cloneable interface.
+
+2. Override the clone method from the Object class and make it public.
+
+**Example**
+
+```java
+class PrototypeExample implements Cloneable {
+    private String name;
+    private int value;
+
+    public PrototypeExample(String name, int value) {
+        this.name = name;
+        this.value = value;
+    }
+
+    @Override
+    public PrototypeExample clone() {
+        try {
+            return (PrototypeExample) super.clone();
+        } catch (CloneNotSupportedException e) {
+            return null;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "PrototypeExample{name='" + name + "', value=" + value + "}";
+    }
+
+    public static void main(String[] args) {
+        PrototypeExample original = new PrototypeExample("Original", 42);
+        PrototypeExample clone = original.clone();
+
+        System.out.println("Original: " + original);
+        System.out.println("Clone: " + clone);
+    }
+}
+```
