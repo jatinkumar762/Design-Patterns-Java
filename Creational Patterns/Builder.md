@@ -17,7 +17,7 @@
 package creational.builder;
 
 class Mobile {
-	public final String modelName;
+	private final String modelName;
 	private final String companyName;
 	private final Integer ramCapacity;
 	private final String processorName;
