@@ -223,6 +223,7 @@ Simple Coffee, Milk, Sugar $7.0
 
 * Classes in Java's I/O package 
 * the java.io.BufferedOutputStream class decorates any java.io.OutputStream object and adds buffering to file writing operation. This improves the disk i/o performance by reducing number of writes.
+* Similarly, InputStream bufferedInputStream = new BufferedInputStream(new FileInputStream("example.txt"));
 
 #### Drawbacks
 
