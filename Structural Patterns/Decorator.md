@@ -1,17 +1,27 @@
-#### Intoduction
+#### Introduction
 
 * When we want to enhance behaviour of our existing object dynamically as and when required
 * Decorator wraps an object within itself and provides same interface as the wrapped object. So the client of original object does not need to change.
-* A decorator provides alternative to subclassing for extending funcationality of existing classes.
+* A decorator provides alternative to subclassing for extending functionality of existing classes.
 
-#### Implementation Steps
+#### Key Concepts:
 
-* We start with out component.
-  * Component defines interface needed or already used by client.
-  * Concrete component implements the component.
-  * We define our decorator. Decorator implements component & also needs reference to concrete component.
-  * In decorator method we provide additional behaviour on top that provided by concrete component instance.
-* Decorator can be abstract as well & depend on subclasses to provide functionality.
+1. **Component:** The interface or abstract class defining the methods that will be implemented.
+
+2. **ConcreteComponent:** 
+
+* The class that implements the Component interface.
+* This is the object to which additional responsibilities can be added.
+
+3. **Decorator:**
+
+* An abstract class that implements the Component interface and has a Component object.
+* It serves as the base class for all decorators.
+
+4. **ConcreteDecorator:**
+
+* The classes that extend the Decorator class and add responsibilities to the Component.
+
 
 #### Implementation Example
 
@@ -24,7 +34,6 @@ public interface Message {
 }
 
 /**
- * 
  * Concrete component
  * Object to be decorated
  */
@@ -43,7 +52,6 @@ public class TextMessage implements Message {
 }
 
 /**
- * 
  * Decorator.
  * Implements component interface
  */
@@ -61,7 +69,6 @@ public class UpperCaseMessage implements Message {
 }
 
 /**
- * 
  * Decorator
  */
 public class Base64EncodedMessage implements Message {
@@ -79,7 +86,6 @@ public class Base64EncodedMessage implements Message {
 
 public class Client {
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Message txtMessage = new TextMessage("<Hello>, How are you?");
 		System.out.println(txtMessage.getContent());
 
@@ -91,6 +97,117 @@ public class Client {
 	}
 }
 ```
+
+#### Example-2
+
+* we have a Coffee interface and different types of coffee and add-ons (like milk, sugar, etc.) using the decorator pattern.
+
+**Step 1: Create the Component interface**
+
+```java
+public interface Coffee {
+    String getDescription();
+    double getCost();
+}
+```
+
+**Step 2: Create the ConcreteComponent class**
+
+```java
+public class SimpleCoffee implements Coffee {
+    @Override
+    public String getDescription() {
+        return "Simple Coffee";
+    }
+
+    @Override
+    public double getCost() {
+        return 5.0;
+    }
+}
+```
+
+**Step 3: Create the Decorator abstract class**
+
+```java
+public abstract class CoffeeDecorator implements Coffee {
+    protected Coffee decoratedCoffee;
+
+    public CoffeeDecorator(Coffee coffee) {
+        this.decoratedCoffee = coffee;
+    }
+
+    public String getDescription() {
+        return decoratedCoffee.getDescription();
+    }
+
+    public double getCost() {
+        return decoratedCoffee.getCost();
+    }
+}
+```
+
+**Step 4: Create ConcreteDecorator classes**
+
+```java
+public class MilkDecorator extends CoffeeDecorator {
+    public MilkDecorator(Coffee coffee) {
+        super(coffee);
+    }
+
+    @Override
+    public String getDescription() {
+        return decoratedCoffee.getDescription() + ", Milk";
+    }
+
+    @Override
+    public double getCost() {
+        return decoratedCoffee.getCost() + 1.5;
+    }
+}
+
+public class SugarDecorator extends CoffeeDecorator {
+    public SugarDecorator(Coffee coffee) {
+        super(coffee);
+    }
+
+    @Override
+    public String getDescription() {
+        return decoratedCoffee.getDescription() + ", Sugar";
+    }
+
+    @Override
+    public double getCost() {
+        return decoratedCoffee.getCost() + 0.5;
+    }
+}
+```
+
+**Step 5: Using the decorators**
+
+```java
+public class DecoratorPatternTest {
+    public static void main(String[] args) {
+        Coffee coffee = new SimpleCoffee();
+        System.out.println(coffee.getDescription() + " $" + coffee.getCost());
+
+        coffee = new MilkDecorator(coffee);
+        System.out.println(coffee.getDescription() + " $" + coffee.getCost());
+
+        coffee = new SugarDecorator(coffee);
+        System.out.println(coffee.getDescription() + " $" + coffee.getCost());
+    }
+}
+```
+
+**Output**
+
+```
+Simple Coffee $5.0
+Simple Coffee, Milk $6.5
+Simple Coffee, Milk, Sugar $7.0
+```
+
 
 #### Implementation Considerations
 
