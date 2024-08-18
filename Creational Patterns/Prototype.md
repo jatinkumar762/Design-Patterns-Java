@@ -143,6 +143,10 @@ The clone method in the Object class is a protected method that creates and retu
 
 2. Override the clone method from the Object class and make it public.
 
+**Considerations**
+
+* Shallow vs. Deep Copying: The default implementation of clone provides a shallow copy. For objects with mutable fields, deep copying might be necessary, which requires additional implementation.
+
 **Example**
 
 ```java
