@@ -25,6 +25,11 @@ public interface Shape extends Cloneable {
 }
 ```
 
+**Note: The Cloneable Interface**
+
+1. The Cloneable interface in Java is a marker interface, meaning it does not contain any methods. It is used to indicate that a class allows its objects to be cloned. 
+2. When a class implements the Cloneable interface, it signals that the clone method of the Object class can be called to create a copy of its instances.
+
 **Step 2: Create Concrete Prototypes**
 
 ```java
