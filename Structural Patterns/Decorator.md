@@ -1,6 +1,6 @@
 #### Introduction
 
-* When we want to enhance behaviour of our existing object dynamically as and when required
+* When we want to enhance behavior of our existing object dynamically as and when required
 * Decorator wraps an object within itself and provides same interface as the wrapped object. So the client of original object does not need to change.
 * A decorator provides alternative to subclassing for extending functionality of existing classes.
 
@@ -216,8 +216,8 @@ Simple Coffee, Milk, Sugar $7.0
 
 #### Design Considerations
 
-* Decorators are more powerful & flexible than inheritance. Inheritance is static by definition but decorator allows you to dynamically compose behaviour using object at runtime. (At runtime we can decide which object is to include or not)
-* Do not change meaning of original operation. It should add helpful small behaviour to object's original behaviour.
+* Decorators are more powerful & flexible than inheritance. Inheritance is static by definition but decorator allows you to dynamically compose behavior using object at runtime. (At runtime we can decide which object is to include or not)
+* Do not change meaning of original operation. It should add helpful small behavior to object's original behavior.
 
 #### Example of a Decorator
 
@@ -230,9 +230,9 @@ Simple Coffee, Milk, Sugar $7.0
 
 #### Summary
 
-* We use it, when we want to add small behaviour on top of existing object.
+* We use it, when we want to add small behavior on top of existing object.
 * A decorator has the same interface as the object it decorates or contains.
-* Decorator allows you to dynamically construct behaviour by using composition.
+* Decorator allows you to dynamically construct behavior by using composition.
 
 #### Reference
 
