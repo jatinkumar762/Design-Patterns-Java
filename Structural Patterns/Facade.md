@@ -13,10 +13,12 @@
 * A facade should minimize the complexity of subsystem and provide usable interface.
 * We can have an interface or abstract class for facade and client can use different subclasses to talk to different subsystems implementations.
 
-#### Example
+#### Real Example
 
-* The java.net.URL class. This class provides a simple method as openStream() and we get an input stream to the resource pointed by the URL object.
-* This class takes care of dealing with multiple classes from the java.net package as well as some internal sun packages.
+- The java.net.URL class. This class provides a simple method as openStream() and we get an input stream to the resource pointed by the URL object.
+	* This class takes care of dealing with multiple classes from the java.net package as well as some internal sun packages.
+
+- Another Real Example: Java Database Connectivity (JDBC)
 
 #### Implementation
 
