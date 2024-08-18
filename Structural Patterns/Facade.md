@@ -10,7 +10,7 @@
 
 #### Implementation Consideration
 
-* A facade should minimize the complexity of subsystem and provide usabe interface.
+* A facade should minimize the complexity of subsystem and provide usable interface.
 * We can have an interface or abstract class for facade and client can use different subclasses to talk to different subsystems implementations.
 
 #### Example
@@ -27,6 +27,7 @@ public interface Hotel {
 	public Menus getMenus();
 }
 
+//Subsystem Classes
 public class NonVegRestaurant implements Hotel {
 	public Menus getMenus() {
 		NonVegMenu nv = new NonVegMenu();
@@ -59,6 +60,7 @@ public interface Menus {
 import java.util.ArrayList;
 import java.util.List;
 
+//Subsystem Classes
 public class NonVegMenu implements Menus {
 	List<String> items = new ArrayList<>();
 
@@ -109,6 +111,7 @@ public enum ResturantTypeEnum {
 	VEG, NON_VEG, BOTH;
 }
 
+//Facade class
 public class HotelKeeper {
 
 	private VegMenu getVegMenu() {
@@ -143,6 +146,7 @@ public class HotelKeeper {
 
 }
 
+//Client
 public class FacadeExample {
 	public static void main(String args[]) {
 		HotelKeeper hotelKeeper = new HotelKeeper();
@@ -155,6 +159,131 @@ public class FacadeExample {
 
 		System.out.println("Menu Items: " + menu);
 	}
+}
+```
+
+#### Example-2
+
+* consider, a simple banking system.
+* The banking system has various operations such as checking account balance, depositing money, withdrawing money, and transferring funds. 
+* We will create a BankingFacade to provide a simplified interface for these operations.
+
+**Subsystem Classes**
+
+* represent different parts of the banking system, each handling specific tasks.
+
+```java
+class Account {
+    private int balance;
+
+    public Account(int balance) {
+        this.balance = balance;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public void deposit(int amount) {
+        balance += amount;
+        System.out.println("Deposited " + amount + ". New balance is " + balance);
+    }
+
+    public void withdraw(int amount) {
+        if (amount > balance) {
+            System.out.println("Insufficient funds");
+        } else {
+            balance -= amount;
+            System.out.println("Withdrew " + amount + ". New balance is " + balance);
+        }
+    }
+}
+
+class TransferService {
+    public void transfer(Account fromAccount, Account toAccount, int amount) {
+        if (fromAccount.getBalance() < amount) {
+            System.out.println("Insufficient funds for transfer");
+        } else {
+            fromAccount.withdraw(amount);
+            toAccount.deposit(amount);
+            System.out.println("Transferred " + amount + " from Account 1 to Account 2");
+        }
+    }
+}
+
+class NotificationService {
+    public void sendNotification(String message) {
+        System.out.println("Notification: " + message);
+    }
+}
+
+class LoanService {
+    public void getLoan(String loanType) {
+        System.out.println("Processing " + loanType + " loan");
+    }
+}
+```
+
+**Facade Class**
+
+* allowing clients to perform banking tasks without needing to interact directly with the subsystem classes.
+
+```java
+public class BankingFacade {
+    private Account account;
+    private TransferService transferService;
+    private NotificationService notificationService;
+    private LoanService loanService;
+
+    public BankingFacade(int initialBalance) {
+        this.account = new Account(initialBalance);
+        this.transferService = new TransferService();
+        this.notificationService = new NotificationService();
+        this.loanService = new LoanService();
+    }
+
+    public void checkBalance() {
+        System.out.println("Current balance is: " + account.getBalance());
+    }
+
+    public void depositMoney(int amount) {
+        account.deposit(amount);
+        notificationService.sendNotification("Deposited " + amount + " to your account.");
+    }
+
+    public void withdrawMoney(int amount) {
+        account.withdraw(amount);
+        notificationService.sendNotification("Withdrew " + amount + " from your account.");
+    }
+
+    public void transferMoney(Account toAccount, int amount) {
+        transferService.transfer(account, toAccount, amount);
+        notificationService.sendNotification("Transferred " + amount + " to another account.");
+    }
+
+    public void applyForLoan(String loanType) {
+        loanService.getLoan(loanType);
+        notificationService.sendNotification("Applied for " + loanType + " loan.");
+    }
+}
+```
+
+**Client Code**
+
+```java
+public class FacadePatternExample {
+    public static void main(String[] args) {
+        BankingFacade bankingFacade = new BankingFacade(1000);
+
+        bankingFacade.checkBalance();
+        bankingFacade.depositMoney(500);
+        bankingFacade.withdrawMoney(200);
+
+        Account anotherAccount = new Account(200);
+        bankingFacade.transferMoney(anotherAccount, 300);
+
+        bankingFacade.applyForLoan("Home");
+    }
 }
 ```
 
