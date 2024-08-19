@@ -40,6 +40,7 @@ class Logger {
 		}
 	}
 
+	//public static synchronized Logger getLoggerInstance()
 	public static Logger getLoggerInstance() {
 		if (loggerInstance == null) {
 			synchronized (Logger.class) {
@@ -65,6 +66,34 @@ public class SingletonDemo {
 
 	}
 
+}
+```
+
+#### Alternative Singleton Implementation (Lazy Initialization Holder Class)
+
+*  thread safety and lazy initialization without explicit synchronization
+
+```java
+public class Logger {
+    // Private constructor to prevent instantiation
+    private Logger() {
+        // Initialization code
+    }
+
+    // Static inner class responsible for holding the singleton instance
+    private static class LoggerHolder {
+        private static final Logger INSTANCE = new Logger();
+    }
+
+    // Public static method to provide access to the single instance
+    public static Logger getInstance() {
+        return LoggerHolder.INSTANCE;
+    }
+
+    // Method to log messages
+    public void log(String message) {
+        System.out.println("Log: " + message);
+    }
 }
 ```
 
