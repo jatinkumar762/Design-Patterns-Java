@@ -25,7 +25,29 @@
   * The instance is initialized only when any app Module calls for it. 
   * Suitable for multiple Singleton class
 
-### Implementation
+
+### Eager Initialization (Eager Loading)
+
+```java
+class EagerSingleton {
+    private static final EagerSingleton instance = new EagerSingleton();
+
+    private EagerSingleton() {}
+
+    public static EagerSingleton getInstance() {
+        return instance;
+    }
+}
+```
+
+**Pros:** 
+- Simple to implement.
+- Thread-safe without synchronization.
+
+**Cons:**
+- Instance is created even if it's never used — might waste memory or CPU.
+
+### Lazy Initialization (Lazy Loading)
 
 ```java
 package creational.singleton;
