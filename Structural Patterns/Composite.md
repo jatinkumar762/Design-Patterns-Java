@@ -154,3 +154,105 @@ public class CompositePatternAWTExample {
     }
 }
 ```
+
+---
+
+## Composite Design Pattern in Simple Terms
+
+The Composite Design Pattern lets you treat individual objects and groups of objects (composites) in the same way. It's like dealing with a single item or a box containing multiple items - you interact with both the same way.
+
+### Real-world Analogy
+
+Imagine a file system:
+- A **file** is a single object
+- A **folder** is a composite that can contain files or other folders
+- You can perform operations (like "display") on both files and folders in the same way
+
+### Java Implementation
+
+Here's a simple implementation:
+
+```java
+// Component interface - common for both leaf and composite
+interface FileSystemItem {
+    void display(String indent);
+}
+
+// Leaf - represents individual objects
+class File implements FileSystemItem {
+    private String name;
+    
+    public File(String name) {
+        this.name = name;
+    }
+    
+    @Override
+    public void display(String indent) {
+        System.out.println(indent + "File: " + name);
+    }
+}
+
+// Composite - represents groups of objects
+class Folder implements FileSystemItem {
+    private String name;
+    private List<FileSystemItem> children = new ArrayList<>();
+    
+    public Folder(String name) {
+        this.name = name;
+    }
+    
+    public void add(FileSystemItem item) {
+        children.add(item);
+    }
+    
+    @Override
+    public void display(String indent) {
+        System.out.println(indent + "Folder: " + name);
+        for (FileSystemItem item : children) {
+            item.display(indent + "  ");
+        }
+    }
+}
+
+// Usage
+public class CompositeDemo {
+    public static void main(String[] args) {
+        Folder root = new Folder("Root");
+        
+        File file1 = new File("Document.txt");
+        File file2 = new File("Image.jpg");
+        
+        Folder subFolder = new Folder("Subfolder");
+        File file3 = new File("Note.txt");
+        
+        root.add(file1);
+        root.add(file2);
+        root.add(subFolder);
+        subFolder.add(file3);
+        
+        root.display("");
+    }
+}
+```
+
+#### Output:
+```
+Folder: Root
+  File: Document.txt
+  File: Image.jpg
+  Folder: Subfolder
+    File: Note.txt
+```
+
+### Key Points:
+1. **Component Interface**: Common interface for both leaf and composite (`FileSystemItem`)
+2. **Leaf**: Represents individual objects (`File`)
+3. **Composite**: Contains leaves or other composites (`Folder`)
+4. **Transparent Treatment**: You can call the same methods (`display()`) on both files and folders
+
+### When to Use:
+- When you need to represent part-whole hierarchies
+- When you want clients to treat individual objects and compositions uniformly
+- Common in GUI systems, file systems, organizational structures
+
+The pattern simplifies client code because it doesn't need to know whether it's dealing with a single object or a group of objects.
