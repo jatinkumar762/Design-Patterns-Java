@@ -29,7 +29,7 @@
   3. [Composite](./Structural%20Patterns/Composite.md)
   4. [Decorator](./Structural%20Patterns/Decorator.md)
   5. [Facade](./Structural%20Patterns/Facade.md)
-  6. Flyweight
+  6. [Flyweight](./Structural%20Patterns/Flyweight.md)
   7. [Proxy](./Structural%20Patterns/Proxy.md)
 
 ### Behavioral Patterns
