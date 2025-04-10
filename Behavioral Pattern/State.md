@@ -15,6 +15,13 @@
 
 * Maintains an instance of a ConcreteState subclass that defines the current state.
 
+    **The Context class is a wrapper class that:**
+
+    1. Maintains a reference to the current strategy/state
+    2. Provides an interface for clients to interact with
+    3. Delegates work to the current strategy/state object
+    4. May handle transitions between different strategies/states
+
 #### Example
 
 **Step 1:** Define the State Interface
