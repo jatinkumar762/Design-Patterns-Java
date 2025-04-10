@@ -129,6 +129,71 @@ public class Logger {
 * Used with parameters and confused with factory
 * Thread safety has to be ensured
 
+### Drawbacks of the Singleton Design Pattern
+
+1. Global State Problems
+
+- Issue: Singletons introduce global variables into your application
+- Consequences:
+  
+  * Can be modified from anywhere in the codebase
+
+2. Tight Coupling
+
+- Issue: Classes using the Singleton become tightly coupled to the concrete Singleton class
+- Consequences:
+
+  * Violates Dependency Inversion Principle
+  * Reduces code flexibility and maintainability
+
+3. Testing Difficulties
+
+- Issue: Singleton state persists between tests
+- Consequences:
+  
+  * Tests can't be isolated from each other
+  * Requires careful resetting of state between tests
+  * Makes parallel test execution problematic
+
+- Example
+
+```java
+// Test A modifies Singleton state
+Database.getInstance().setConfig(...);
+
+// Test B unexpectedly gets modified state
+Database.getInstance().query(...); 
+```
+
+4. Concurrency Challenges
+
+- Issue: Thread safety must be carefully implemented
+
+5. Inheritance Limitations
+
+- Issue: Singletons can't be subclassed (private constructor)
+- Consequences:
+  
+  * Limits polymorphism and extensibility
+  * Violates Open/Closed Principle
+  * Makes it hard to create variations of the Singleton
+
+6. Lifecycle Management Problems
+
+- Issue: Singleton lifetime is typically the entire application lifetime
+- Consequences:
+
+  * Can't dispose/recreate when needed
+  * Memory leaks if Singleton holds heavy resources
+
+
+### When Singleton Might Be Acceptable
+
+- When the instance is truly stateless (utility classes)
+- For logging frameworks (where global access is actually desired)
+- Hardware access points (where multiple instances don't make sense)
+- When using immutable objects
+
 ### Resources
 * [sudoCode - Story of Singleton Design Pattern](https://www.youtube.com/watch?v=EZDeEHXUf8w)
 
