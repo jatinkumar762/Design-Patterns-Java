@@ -194,6 +194,37 @@ Database.getInstance().query(...);
 - Hardware access points (where multiple instances don't make sense)
 - When using immutable objects
 
+### Better Alternatives
+
+1. Dependency Injection:
+
+```java
+// Instead of:
+Database.getInstance().query(...);
+
+// Prefer:
+class UserService {
+    private final Database db;
+    
+    public UserService(Database db) { // Injected dependency
+        this.db = db;
+    }
+}
+```
+
+2. Factory Pattern when controlled instantiation is needed
+
+3. Monostate Pattern if you really need shared state:
+
+```java
+class Monostate {
+    private static String sharedState;
+    
+    public String getState() { return sharedState; }
+    public void setState(String s) { sharedState = s; }
+}
+```
+
 ### Resources
 * [sudoCode - Story of Singleton Design Pattern](https://www.youtube.com/watch?v=EZDeEHXUf8w)
 
