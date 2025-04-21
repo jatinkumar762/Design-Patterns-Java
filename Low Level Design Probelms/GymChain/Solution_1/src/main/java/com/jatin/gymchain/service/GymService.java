@@ -12,7 +12,7 @@ public class GymService {
 
     private Map<String, Gym> gymMap = new HashMap<>();
     private Map<String, Booking> bookingMap = new HashMap<>();
-    private Map<String, List<String>> customerBookings;
+    private Map<String, List<String>> customerBookings = new HashMap<>();;
 
     public String addGym(String name, String location, int maxAccomodation){
 
