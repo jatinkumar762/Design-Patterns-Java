@@ -6,13 +6,20 @@ import com.jatin.gymchain.dtos.GymClass;
 import com.jatin.gymchain.enums.ClassType;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 public class GymService {
 
-    private Map<String, Gym> gymMap = new HashMap<>();
-    private Map<String, Booking> bookingMap = new HashMap<>();
-    private Map<String, List<String>> customerBookings = new HashMap<>();;
+    private Map<String, Gym> gymMap;
+    private Map<String, Booking> bookingMap;
+    private Map<String, List<String>> customerBookings;
+
+    public GymService(){
+        this.gymMap = new ConcurrentHashMap<>();
+        this.bookingMap = new ConcurrentHashMap<>();
+        this.customerBookings = new ConcurrentHashMap<>();
+    }
 
     public String addGym(String name, String location, int maxAccomodation){
 
