@@ -22,7 +22,269 @@
     3. Delegates work to the current strategy/state object
     4. May handle transitions between different strategies/states
 
-#### Example
+### Example
+
+```java
+
+interface PlayerState{
+    void pressPlay(MediaPlayer player);
+    void pressPause(MediaPlayer player);
+    void pressMute(MediaPlayer player);
+    void pressPower(MediaPlayer player);
+    void printStatus();
+}
+
+enum State{
+    OFF, PLAYING, PAUSED, MUTED;
+}
+
+class Logger {
+
+    public static void logMessage(String message){
+        System.out.println(message);
+    }
+}
+
+// Off State
+class OffState implements PlayerState {
+
+    @Override
+    public void pressPlay(MediaPlayer player) {
+        Logger.logMessage("Turning on and starting playback");
+        player.setState(State.PLAYING);
+    }
+
+    @Override
+    public void pressPause(MediaPlayer player) {
+        Logger.logMessage("Cannot pause - player is off");
+    }
+
+    @Override
+    public void pressMute(MediaPlayer player) {
+        Logger.logMessage("Cannot mute - player is off");
+    }
+
+    @Override
+    public void pressPower(MediaPlayer player) {
+        Logger.logMessage("Player is already off");
+    }
+
+    @Override
+    public void printStatus() {
+        Logger.logMessage("Player is OFF");
+    }
+}
+
+// Playing State
+class PlayingState implements PlayerState {
+    @Override
+    public void pressPlay(MediaPlayer player) {
+        Logger.logMessage("Already playing");
+    }
+
+    @Override
+    public void pressPause(MediaPlayer player) {
+        Logger.logMessage("Pausing playback");
+        player.setState(State.PAUSED);
+    }
+
+    @Override
+    public void pressMute(MediaPlayer player) {
+        Logger.logMessage("Muting player");
+        player.setState(State.MUTED);
+    }
+
+    @Override
+    public void pressPower(MediaPlayer player) {
+        Logger.logMessage("Turning off player");
+        player.setState(State.OFF);
+    }
+
+    @Override
+    public void printStatus() {
+        Logger.logMessage("Player is PLAYING");
+    }
+}
+
+// Paused State
+class PausedState implements PlayerState {
+    @Override
+    public void pressPlay(MediaPlayer player) {
+       Logger.logMessage("Resuming playback");
+       player.setState(State.PLAYING);
+    }
+
+    @Override
+    public void pressPause(MediaPlayer player) {
+        Logger.logMessage("Already paused");
+    }
+
+    @Override
+    public void pressMute(MediaPlayer player) {
+        Logger.logMessage("Cannot mute while paused");
+    }
+
+    @Override
+    public void pressPower(MediaPlayer player) {
+        Logger.logMessage("Turning off player");
+        player.setState(State.OFF);
+    }
+
+    @Override
+    public void printStatus() {
+        Logger.logMessage("Player is PAUSED");
+    }
+}
+
+// Muted State
+class MutedState implements PlayerState {
+    @Override
+    public void pressPlay(MediaPlayer player) {
+        Logger.logMessage("Already playing (muted)");
+    }
+
+    @Override
+    public void pressPause(MediaPlayer player) {
+        Logger.logMessage("Pausing muted playback");
+        player.setState(State.PAUSED);
+    }
+
+    @Override
+    public void pressMute(MediaPlayer player) {
+        Logger.logMessage("Unmuting player");
+        player.setState(State.MUTED);
+    }
+
+    @Override
+    public void pressPower(MediaPlayer player) {
+        Logger.logMessage("Turning off player");
+        player.setState(State.OFF);
+    }
+
+    @Override
+    public void printStatus() {
+        Logger.logMessage("Player is PLAYING (MUTED)");
+    }
+}
+
+class MediaPlayer {
+    private State state;
+    private OffState offState;
+    private PlayingState playingState;
+    private PausedState pausedState;
+    private MutedState mutedState;
+
+    MediaPlayer() {
+        this.state = State.OFF;
+        this.offState = new OffState();
+        this.playingState = new PlayingState();
+        this.pausedState = new PausedState();
+        this.mutedState = new MutedState();
+    }
+
+    public void setState(State state) {
+        this.state = state;
+    }
+
+    // Button press handlers
+    public void pressPlay() {
+
+        PlayerState currentState = getPlayerState();
+
+        currentState.pressPlay(this);
+    }
+
+    public void pressPause() {
+
+        PlayerState currentState = getPlayerState();
+
+        currentState.pressPause(this);
+    }
+
+    public void pressMute() {
+        PlayerState currentState = getPlayerState();
+
+        currentState.pressMute(this);
+    }
+
+    public void pressPower() {
+        PlayerState currentState = getPlayerState();
+
+        currentState.pressPower(this);
+    }
+
+    public void printStatus() {
+        PlayerState currentState = getPlayerState();
+        currentState.printStatus();
+    }
+
+
+    private PlayerState getPlayerState(){
+
+        switch (state) {
+            case OFF -> {
+                return offState;
+            }
+            case PLAYING -> {
+                return playingState;
+            }
+            case MUTED -> {
+                return mutedState;
+            }
+            case PAUSED -> {
+                return pausedState;
+            }
+            default -> throw new IllegalArgumentException("Unknown state: " + state);
+        }
+    }
+}
+
+public class StateDesignPatternDemo {
+
+    public static void main(String args[]){
+
+        MediaPlayer player = new MediaPlayer();
+
+        Logger.logMessage("--- Initial state ---");
+        player.printStatus();
+
+        Logger.logMessage("\n--- Turning on ---");
+        player.pressPlay();  // Turns on and starts playing
+        player.printStatus();
+
+        Logger.logMessage("\n--- Pausing ---");
+        player.pressPause();
+        player.printStatus();
+
+        Logger.logMessage("\n--- Resuming ---");
+        player.pressPlay();
+        player.printStatus();
+
+        Logger.logMessage("\n--- Muting ---");
+        player.pressMute();
+        player.printStatus();
+
+        Logger.logMessage("\n--- Trying to pause while muted ---");
+        player.pressPause();
+        player.printStatus();
+
+        Logger.logMessage("\n--- Unmuting ---");
+        player.pressMute();
+        player.printStatus();
+
+        Logger.logMessage("\n--- Turning off ---");
+        player.pressPower();
+        player.printStatus();
+
+        Logger.logMessage("\n--- Trying to pause while off ---");
+        player.pressPause();
+        player.printStatus();
+    }
+}
+```
+
+
+### Example
 
 **Step 1:** Define the State Interface
 
