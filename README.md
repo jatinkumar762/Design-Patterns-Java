@@ -51,6 +51,10 @@
 
 ## Low Level Design Problems
 
+* [Practical low-level design (LLD) problems](./PracticalProblems_DesignPatterns.md)
+
+---
+
 - [ParkingLot](./Low%20Level%20Design%20Probelms/ParkingLot/)
 - [Chess Game](./Low%20Level%20Design%20Probelms/ChessLLD/)
 - [SnakeAndLadder Game](./Low%20Level%20Design%20Probelms/SnakeAndLadder/)
