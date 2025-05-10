@@ -1,6 +1,5 @@
 #### Introduction
-* need to avoid tight coupling the code which sends request to the code which handles that request.
-* Typically the code which wants some requested calls the exact method on an exact object to process it, thus the tight coupling. 
+* need to avoid tight coupling, the code which sends request to the code which handles that request.
 * Chain of responsibility solves this problem by giving more than one object, chance to process the request.
 * We create objects which are chained together by one object knowing reference of object which is next in chain. 
 * We give request to first object in chain, if it can't handle that it simply passes the request down the chain.
@@ -9,8 +8,10 @@
 * We start by defining handler interface/abstract class 
   * Handler must define a method to accept incoming request 
   * Handler can define method to access successor in chain. If it's an abstract class then we can even maintain successor.
-* Next we implement handler in one or more concrete handlers.Concrete handler should check if it can handle the request. If not then it should pass request to next handler.
-* We have to create our chain of objects next. We can do it in client. Typically in real world this job will be done by some framework or initialization code written by you.
+* Next we implement handler in one or more concrete handlers. 
+    * Concrete handler should check if it can handle the request. If not then it should pass request to next handler.
+* We have to create our chain of objects next. We can do it in client. 
+    * Typically in real world this job will be done by some framework or initialization code written by you.
 * Client needs to know only the first object in chain. It'll pass on request to this object
 
 #### Implementation
