@@ -60,4 +60,5 @@
 - [SnakeAndLadder Game](./Low%20Level%20Design%20Probelms/SnakeAndLadder/)
 - [SplitWise](./Low%20Level%20Design%20Probelms/SplitWise/)
 - [TicTacToe Game](./Low%20Level%20Design%20Probelms/TicTacToe/)
+- [Elevator Design](./Low%20Level%20Design%20Probelms/ElevatorLLDProblem/)
 
